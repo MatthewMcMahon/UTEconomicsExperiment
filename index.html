@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+
+  <title>UT Econ Experiment</title>
+  <meta name="description" content="UT Econ Experiments">
+  <meta name="viewport" content="width=device-width">
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+  <link rel="stylesheet" href="css/styles.css">
+  <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+  <script type="text/javascript" src="http://www.parsecdn.com/js/parse-1.2.3.min.js"></script>
+  <script type="text/javascript" src="http://www.google.com/recaptcha/api/js/recaptcha_ajax.js"></script>
+</head>
+
+<body>
+  <div class="container"> 
+
+    <div id="header" class="hero-unit">
+      <div id="computerSetup">
+        <h1>Which computer am I?</h1>
+        <div id="computerForm" class="form-inline">
+          <input type="text" id="sessionInput" class="input-medium" placeholder="Session Number" />
+          <input type="text" id="computerInput" class="input-medium" placeholder="Computer Name" />
+          <input type="button" class="btn btn-info" id="submitComputer" value="Set Computer" />
+        </div>
+        <div id="ipInfo">Current IP:
+          <span id="ipLoading">loading... </span>
+          <span id="ipDone"></span>
+        </div>
+      </div>
+      <div id="computerInfo">
+        <h1></h1>
+      </div>
+    </div>
+
+    <div id="content" class="row">
+      <div id="results" class="span4">
+        <p>Correctly solved: <span id="results_recaptchas">0</span></p>
+        <p>Tokens earned: <span id="results_tokens">0</span></p>
+        <p>&nbsp;</p>
+        <input type="button" id="exportButton" class="btn btn-warning btn-large" value="Export" />
+      </div>
+
+      <div class="span8">
+        <form id="recaptcha_form" action="" method="POST">
+          <div id="recaptcha_div">
+          </div>
+        </form>
+
+        <input type="button" id="submitButton" class="btn btn-info btn-large" value="Gotcha, you Captcha" />
+        <img src="css/animated-spinner.gif" />
+
+        <div id="flash_error" class="alert alert-error"></div>
+      </div>
+    </div>
+    </form>
+
+  </div>
+
+  <script type="text/javascript" src="recaptcha.js"></script>
+  <script type="text/javascript">
+    // Attach handlers to the DOM elements
+    $('form#recaptcha_form').submit(UT.submitCaptcha);
+    $('input#submitComputer').click(UT.submitComputerInfo);
+    $('input#submitButton').click(UT.submitCaptcha);
+    $('input#exportButton').click(UT.exportData);
+  </script>
+</body>
+
+</html>
